@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mimi Pin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  body { font-family: Inter, system-ui, sans-serif; background: #e9e8e4; color: #1A2138; padding: 48px 16px; }
+  .wrap { max-width: 1100px; margin: 0 auto; display: grid; gap: 24px; }
+  h1 { font-weight: 600; font-size: 28px; letter-spacing: -0.02em; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .card { border-radius: 20px; padding: 28px; border: 1px solid rgba(26,33,56,.1); }
+  .light { background: #FBFAF7; color: #1A2138; }
+  .dark  { background: #12151F; color: #ECEAE4; border-color: rgba(236,234,228,.1); }
+  .label { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; opacity: .6; margin-bottom: 16px; }
+  .hero svg { width: 100%; max-width: 280px; display: block; margin: 0 auto; }
+  .states { display: flex; gap: 20px; flex-wrap: wrap; justify-content: space-around; }
+  .state { text-align: center; font-size: 13px; }
+  .state svg { width: 120px; display: block; margin-bottom: 8px; }
+  .sizes { display: flex; gap: 28px; align-items: end; }
+  .sizes div { text-align: center; font-size: 12px; }
+  .sizes svg { display: block; margin: 0 auto 6px; }
+  .blink { transform-box: fill-box; transform-origin: center; animation: blink 5s infinite; }
+  @keyframes blink { 0%, 94%, 100% { transform: scaleY(1); } 97% { transform: scaleY(.1); } }
+  @media (prefers-reduced-motion: reduce) { .blink { animation: none; } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <!-- Head: midnight enamel with muted-gold rim -->
+    <g id="head">
+      <path d="M40 22 L78 62 Q100 56 122 62 L160 22 Q168 70 164 96 Q176 130 158 156 Q132 184 100 184 Q68 184 42 156 Q24 130 36 96 Q32 70 40 22 Z"
+            fill="#1A2138" stroke="#B89A5E" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M48 38 L70 63 Q57 69 49 79 Q45 60 48 38 Z" fill="#B89A5E"/>
+      <path d="M152 38 L130 63 Q143 69 151 79 Q155 60 152 38 Z" fill="#B89A5E"/>
+    </g>
+    <!-- Ember forehead star -->
+    <path id="star" d="M100 72 Q102 83 111 86 Q102 89 100 100 Q98 89 89 86 Q98 83 100 72 Z"
+          fill="#D9622B" stroke="#B89A5E" stroke-width="1.5" stroke-linejoin="round"/>
+    <!-- Heart nose, mouth, whiskers (large sizes only) -->
+    <g id="face" fill="none" stroke="#B89A5E" stroke-width="2.5" stroke-linecap="round">
+      <path d="M100 150 C92 144 92 136 97 136 C99 136 100 138 100 139 C100 138 101 136 103 136 C108 136 108 144 100 150 Z" fill="#B89A5E" stroke="none"/>
+      <path d="M92 159 Q96 163 100 157 Q104 163 108 159"/>
+      <path d="M40 148 L14 143 M40 157 L16 162 M160 148 L186 143 M160 157 L184 162"/>
+    </g>
+    <!-- Eye: cream almond, gold rim, midnight slit -->
+    <g id="eye">
+      <path d="M-20 0 Q0 -18 20 0 Q0 16 -20 0 Z" fill="#F3EEE4" stroke="#B89A5E" stroke-width="2.5" stroke-linejoin="round"/>
+      <ellipse rx="3.5" ry="8" fill="#1A2138"/>
+    </g>
+    <g id="eye-sm">
+      <path d="M-14 0 Q0 -12 14 0 Q0 11 -14 0 Z" fill="#F3EEE4" stroke="#B89A5E" stroke-width="2.5" stroke-linejoin="round"/>
+      <ellipse rx="2.5" ry="6" fill="#1A2138"/>
+    </g>
+
+    <symbol id="mimi" viewBox="0 0 200 200">
+      <use href="#head"/><use href="#star"/><use href="#face"/>
+      <g class="blink"><use href="#eye" x="72" y="116"/><use href="#eye" x="128" y="116"/></g>
+    </symbol>
+    <symbol id="mimi-still" viewBox="0 0 200 200">
+      <use href="#head"/><use href="#star"/><use href="#face"/>
+      <use href="#eye" x="72" y="116"/><use href="#eye" x="128" y="116"/>
+    </symbol>
+    <symbol id="mimi-sleep" viewBox="0 0 200 200">
+      <use href="#head"/><use href="#star"/><use href="#face"/>
+      <path d="M54 118 Q72 128 90 118 M110 118 Q128 128 146 118" fill="none" stroke="#B89A5E" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="mimi-think" viewBox="0 0 200 200">
+      <use href="#head"/><use href="#star"/><use href="#face"/>
+      <use href="#eye-sm" x="78" y="110"/><use href="#eye-sm" x="122" y="110"/>
+      <use href="#eye-sm" x="60" y="134"/><use href="#eye-sm" x="140" y="134"/>
+    </symbol>
+    <!-- Small icon: thicker rim, no whiskers/mouth -->
+    <symbol id="mimi-icon" viewBox="0 0 200 200">
+      <path d="M40 22 L78 62 Q100 56 122 62 L160 22 Q168 70 164 96 Q176 130 158 156 Q132 184 100 184 Q68 184 42 156 Q24 130 36 96 Q32 70 40 22 Z"
+            fill="#1A2138" stroke="#B89A5E" stroke-width="9" stroke-linejoin="round"/>
+      <path d="M100 68 Q103 83 115 86 Q103 89 100 104 Q97 89 85 86 Q97 83 100 68 Z" fill="#D9622B"/>
+      <path d="M50 120 Q72 98 94 120 Q72 138 50 120 Z" fill="#F3EEE4"/>
+      <path d="M106 120 Q128 98 150 120 Q128 138 106 120 Z" fill="#F3EEE4"/>
+      <ellipse cx="72" cy="120" rx="5" ry="10" fill="#1A2138"/>
+      <ellipse cx="128" cy="120" rx="5" ry="10" fill="#1A2138"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <h1>Mimi</h1>
+
+  <div class="grid">
+    <section class="card light hero"><div class="label">Light</div><svg role="img" aria-label="Mimi"><use href="#mimi"/></svg></section>
+    <section class="card dark hero"><div class="label">Dark</div><svg role="img" aria-label="Mimi"><use href="#mimi"/></svg></section>
+  </div>
+
+  <section class="card light">
+    <div class="label">States</div>
+    <div class="states">
+      <div class="state"><svg viewBox="0 0 200 200"><use href="#mimi-still"/></svg>Idle (blinks)</div>
+      <div class="state"><svg viewBox="0 0 200 200"><use href="#mimi-sleep"/></svg>Asleep</div>
+      <div class="state"><svg viewBox="0 0 200 200"><use href="#mimi-think"/></svg>Thinking (later)</div>
+    </div>
+  </section>
+
+  <div class="grid">
+    <section class="card light"><div class="label">Corner sizes</div>
+      <div class="sizes">
+        <div><svg width="64" height="64"><use href="#mimi-icon"/></svg>64</div>
+        <div><svg width="48" height="48"><use href="#mimi-icon"/></svg>48</div>
+        <div><svg width="32" height="32"><use href="#mimi-icon"/></svg>32</div>
+      </div>
+    </section>
+    <section class="card dark"><div class="label">Corner sizes</div>
+      <div class="sizes">
+        <div><svg width="64" height="64"><use href="#mimi-icon"/></svg>64</div>
+        <div><svg width="48" height="48"><use href="#mimi-icon"/></svg>48</div>
+        <div><svg width="32" height="32"><use href="#mimi-icon"/></svg>32</div>
+      </div>
+    </section>
+  </div>
+</div>
+</body>
+</html>

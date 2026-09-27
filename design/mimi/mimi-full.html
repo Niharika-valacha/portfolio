@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mimi Full Body</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  body { font-family: Inter, system-ui, sans-serif; background: #e9e8e4; color: #1A2138; padding: 48px 16px; }
+  .wrap { max-width: 1100px; margin: 0 auto; display: grid; gap: 24px; }
+  h1 { font-weight: 600; font-size: 28px; letter-spacing: -0.02em; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .card { border-radius: 20px; padding: 28px; border: 1px solid rgba(26,33,56,.1); }
+  .light { background: #FBFAF7; color: #1A2138; }
+  .dark  { background: #12151F; color: #ECEAE4; border-color: rgba(236,234,228,.1); }
+  .label { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; opacity: .6; margin-bottom: 16px; }
+  .hero svg { width: 100%; max-width: 300px; display: block; margin: 0 auto; }
+  .poses { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; }
+  .pose { text-align: center; font-size: 13px; }
+  .pose svg { width: 100%; max-width: 170px; display: block; margin: 0 auto 8px; }
+  .blink { transform-box: fill-box; transform-origin: center; animation: blink 5s infinite; }
+  .sway { transform-box: view-box; transform-origin: 178px 258px; animation: sway 3s ease-in-out infinite; }
+  .twinkle { transform-box: fill-box; transform-origin: center; animation: twinkle 2.4s ease-in-out infinite; }
+  @keyframes blink { 0%, 94%, 100% { transform: scaleY(1); } 97% { transform: scaleY(.1); } }
+  @keyframes sway { 50% { transform: rotate(-6deg); } }
+  @keyframes twinkle { 50% { transform: scale(.5); opacity: .4; } }
+  @media (prefers-reduced-motion: reduce) { .blink, .sway, .twinkle { animation: none; } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <!-- Head (same art as the pin), drawn in a 200-wide box -->
+    <g id="head">
+      <path d="M40 22 L78 62 Q100 56 122 62 L160 22 Q168 70 164 96 Q176 130 158 156 Q132 184 100 184 Q68 184 42 156 Q24 130 36 96 Q32 70 40 22 Z"
+            fill="#1A2138" stroke="#B89A5E" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M48 38 L70 63 Q57 69 49 79 Q45 60 48 38 Z" fill="#B89A5E"/>
+      <path d="M152 38 L130 63 Q143 69 151 79 Q155 60 152 38 Z" fill="#B89A5E"/>
+      <path d="M100 72 Q102 83 111 86 Q102 89 100 100 Q98 89 89 86 Q98 83 100 72 Z"
+            fill="#D9622B" stroke="#B89A5E" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M100 150 C92 144 92 136 97 136 C99 136 100 138 100 139 C100 138 101 136 103 136 C108 136 108 144 100 150 Z" fill="#B89A5E"/>
+      <path d="M40 148 L14 143 M40 157 L16 162 M160 148 L186 143 M160 157 L184 162" fill="none" stroke="#B89A5E" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+    <path id="mouth" d="M92 159 Q96 163 100 157 Q104 163 108 159" fill="none" stroke="#B89A5E" stroke-width="2.5" stroke-linecap="round"/>
+    <path id="mouth-open" d="M92 157 Q100 157 108 157 Q106 170 100 170 Q94 170 92 157 Z" fill="#F3EEE4" stroke="#B89A5E" stroke-width="2.5" stroke-linejoin="round"/>
+
+    <!-- Eyes -->
+    <g id="eye">
+      <path d="M-20 0 Q0 -18 20 0 Q0 16 -20 0 Z" fill="#F3EEE4" stroke="#B89A5E" stroke-width="2.5" stroke-linejoin="round"/>
+      <ellipse rx="3.5" ry="8" fill="#1A2138"/>
+    </g>
+    <g id="eye-wide">
+      <path d="M-20 0 Q0 -20 20 0 Q0 18 -20 0 Z" fill="#F3EEE4" stroke="#B89A5E" stroke-width="2.5" stroke-linejoin="round"/>
+      <circle r="7" fill="#1A2138"/><circle cx="2.5" cy="-2.5" r="2" fill="#F3EEE4"/>
+    </g>
+    <path id="eye-happy" d="M-16 4 Q0 -12 16 4" fill="none" stroke="#B89A5E" stroke-width="3.5" stroke-linecap="round"/>
+    <g id="eye-sm">
+      <path d="M-14 0 Q0 -12 14 0 Q0 11 -14 0 Z" fill="#F3EEE4" stroke="#B89A5E" stroke-width="2.5" stroke-linejoin="round"/>
+      <ellipse rx="2.5" ry="6" fill="#1A2138"/>
+    </g>
+
+    <!-- Body parts, 240 x 290 box -->
+    <g id="tail">
+      <path d="M176 258 Q226 254 224 206 Q222 180 204 176" fill="none" stroke="#B89A5E" stroke-width="26" stroke-linecap="round"/>
+      <path d="M176 258 Q226 254 224 206 Q222 180 204 176" fill="none" stroke="#1A2138" stroke-width="18" stroke-linecap="round"/>
+    </g>
+    <path id="body" d="M72 150 Q36 200 48 250 Q58 276 120 276 Q182 276 192 250 Q204 200 168 150 Z"
+          fill="#1A2138" stroke="#B89A5E" stroke-width="4" stroke-linejoin="round"/>
+    <path id="tuft" d="M106 200 L112 208 L120 200 L128 208 L134 200" fill="none" stroke="#B89A5E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <g id="paw">
+      <ellipse rx="20" ry="13" fill="#1A2138" stroke="#B89A5E" stroke-width="4"/>
+      <path d="M-6 -2 L-6 7 M6 -2 L6 7" stroke="#B89A5E" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    <g id="wave">
+      <path d="M166 196 Q200 180 210 132" fill="none" stroke="#B89A5E" stroke-width="30" stroke-linecap="round"/>
+      <path d="M166 196 Q200 180 210 132" fill="none" stroke="#1A2138" stroke-width="22" stroke-linecap="round"/>
+      <circle cx="210" cy="126" r="14" fill="#1A2138" stroke="#B89A5E" stroke-width="4"/>
+      <path d="M204 120 L204 128 M210 118 L210 127 M216 120 L216 128" stroke="#B89A5E" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    <path id="sparkle" d="M0 -8 Q1 -1 8 0 Q1 1 0 8 Q-1 1 -8 0 Q-1 -1 0 -8 Z" fill="#B89A5E"/>
+
+    <!-- Poses -->
+    <symbol id="idle" viewBox="0 0 240 290">
+      <g class="sway"><use href="#tail"/></g>
+      <use href="#body"/><use href="#tuft"/>
+      <use href="#paw" x="96" y="268"/><use href="#paw" x="144" y="268"/>
+      <g transform="translate(20 0)"><use href="#head"/><use href="#mouth"/>
+        <g class="blink"><use href="#eye" x="72" y="116"/><use href="#eye" x="128" y="116"/></g></g>
+      <g class="twinkle"><use href="#sparkle" x="22" y="40"/></g>
+      <g class="twinkle" style="animation-delay:1.2s"><use href="#sparkle" x="222" y="70" transform="scale(.7)" transform-origin="222 70"/></g>
+    </symbol>
+
+    <symbol id="greet" viewBox="0 0 240 290">
+      <use href="#tail"/><use href="#body"/><use href="#tuft"/>
+      <use href="#paw" x="96" y="268"/><use href="#wave"/>
+      <g transform="translate(20 0)"><use href="#head"/><use href="#mouth-open"/>
+        <use href="#eye-happy" x="72" y="118"/><use href="#eye-happy" x="128" y="118"/></g>
+    </symbol>
+
+    <symbol id="listen" viewBox="0 0 240 290">
+      <use href="#tail"/><use href="#body"/><use href="#tuft"/>
+      <use href="#paw" x="96" y="268"/><use href="#paw" x="144" y="268"/>
+      <g transform="translate(20 0) rotate(-9 100 170)"><use href="#head"/><use href="#mouth"/>
+        <use href="#eye-wide" x="72" y="116"/><use href="#eye-wide" x="128" y="116"/></g>
+    </symbol>
+
+    <symbol id="think" viewBox="0 0 240 290">
+      <use href="#tail"/><use href="#body"/><use href="#tuft"/>
+      <use href="#paw" x="96" y="268"/><use href="#paw" x="144" y="268"/>
+      <g transform="translate(20 0)"><use href="#head"/><use href="#mouth"/>
+        <use href="#eye-sm" x="78" y="110"/><use href="#eye-sm" x="122" y="110"/>
+        <use href="#eye-sm" x="60" y="134"/><use href="#eye-sm" x="140" y="134"/></g>
+      <circle cx="196" cy="24" r="4" fill="#B89A5E"/><circle cx="210" cy="14" r="5" fill="#B89A5E"/><circle cx="226" cy="8" r="6" fill="#B89A5E"/>
+    </symbol>
+
+    <symbol id="reply" viewBox="0 0 240 290">
+      <use href="#tail"/><use href="#body"/><use href="#tuft"/>
+      <use href="#paw" x="96" y="268"/><use href="#paw" x="144" y="268"/>
+      <g transform="translate(20 0)"><use href="#head"/><use href="#mouth-open"/>
+        <use href="#eye" x="72" y="116"/><use href="#eye" x="128" y="116"/></g>
+      <use href="#sparkle" x="218" y="150"/><use href="#sparkle" x="228" y="126" transform="scale(.6)" transform-origin="228 126"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <h1>Mimi, full body</h1>
+
+  <div class="grid">
+    <section class="card light hero"><div class="label">Light</div><svg viewBox="0 0 240 290" role="img" aria-label="Mimi"><use href="#idle"/></svg></section>
+    <section class="card dark hero"><div class="label">Dark</div><svg viewBox="0 0 240 290" role="img" aria-label="Mimi"><use href="#idle"/></svg></section>
+  </div>
+
+  <section class="card light">
+    <div class="label">Guide states</div>
+    <div class="poses">
+      <div class="pose"><svg viewBox="0 0 240 290"><use href="#greet"/></svg>Greeting</div>
+      <div class="pose"><svg viewBox="0 0 240 290"><use href="#listen"/></svg>Listening</div>
+      <div class="pose"><svg viewBox="0 0 240 290"><use href="#think"/></svg>Thinking</div>
+      <div class="pose"><svg viewBox="0 0 240 290"><use href="#reply"/></svg>Replying</div>
+    </div>
+  </section>
+
+  <section class="card dark">
+    <div class="label">Guide states</div>
+    <div class="poses">
+      <div class="pose"><svg viewBox="0 0 240 290"><use href="#greet"/></svg>Greeting</div>
+      <div class="pose"><svg viewBox="0 0 240 290"><use href="#listen"/></svg>Listening</div>
+      <div class="pose"><svg viewBox="0 0 240 290"><use href="#think"/></svg>Thinking</div>
+      <div class="pose"><svg viewBox="0 0 240 290"><use href="#reply"/></svg>Replying</div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

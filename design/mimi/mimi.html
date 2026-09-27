@@ -1,0 +1,233 @@
+<title>Mimi v1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --bg:#FFF4EC; --card:#FFFFFF; --line:#F3DCCB; --ink:#2A1E3B; --muted:#6E5F7E;
+  --orange:#FF8A5B; --orange-ink:#C24E22; --violet:#7C5CFF; --sun:#FFC857;
+  /* Mimi's own colors stay the same in both themes */
+  --m-cream:#FFF6E6; --m-navy:#1B2350; --m-navy-in:#4A5BA8; --m-aqua:#4FE3D2; --m-cyan:#22D3EE; --m-line:#2A1E3B; --m-blush:#FF8FA3;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){color-scheme:dark;--bg:#1E1530;--card:#2A1F40;--line:#3D2F57;--ink:#FFE9DC;--muted:#C2B3CF;--orange-ink:#FF9B72;--violet:#B3A1FF}
+}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#1E1530;--card:#2A1F40;--line:#3D2F57;--ink:#FFE9DC;--muted:#C2B3CF;--orange-ink:#FF9B72;--violet:#B3A1FF}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 "DM Sans",ui-sans-serif,system-ui,sans-serif;padding-inline:20px}
+.wrap{max-width:880px;margin:0 auto;padding-block:40px 64px;display:flex;flex-direction:column;gap:28px}
+h1{font:800 clamp(2rem,5vw,3rem)/1.05 "Bricolage Grotesque",ui-sans-serif,sans-serif;letter-spacing:-.02em;margin:0;text-wrap:balance}
+h2{font:700 1.2rem/1.2 "Bricolage Grotesque",ui-sans-serif,sans-serif;margin:0}
+p{margin:0}
+.lede{color:var(--muted);max-width:60ch}
+.mono{font:500 .74rem "JetBrains Mono",ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+
+.stage{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.hero-mimi{display:grid;place-items:center;background:radial-gradient(circle at 50% 60%,color-mix(in srgb,var(--sun) 35%,transparent),transparent 65%);border-radius:18px;min-height:300px}
+.hero-mimi svg{width:min(280px,100%);height:auto;cursor:pointer}
+.controls{display:flex;flex-direction:column;gap:16px}
+.states{display:flex;flex-wrap:wrap;gap:8px}
+.states button{font:600 .95rem "DM Sans",sans-serif;color:var(--ink);background:transparent;border:2px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer}
+.states button:hover{border-color:var(--violet)}
+.states button[aria-pressed="true"]{background:var(--orange);border-color:var(--orange);color:#2A1E3B}
+.states button:focus-visible{outline:3px solid var(--violet);outline-offset:2px}
+.hint{font-size:.92rem;color:var(--muted)}
+.hint code{font:500 .85rem "JetBrains Mono",monospace;color:var(--violet)}
+@media (max-width:680px){.stage{grid-template-columns:1fr;padding:20px}.hero-mimi{min-height:240px}}
+
+.sizes{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end}
+.size{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.size svg{height:auto;display:block}
+
+.table{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:16px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{text-align:left;padding:10px 16px;border-top:1px solid var(--line);vertical-align:top}
+th{font:500 .72rem "JetBrains Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-top:0}
+td:first-child{font-weight:600;white-space:nowrap}
+
+/* ---------- Mimi ---------- */
+.mimi *{transform-box:view-box}
+.mimi .o{stroke:var(--m-line);stroke-width:4;stroke-linejoin:round;stroke-linecap:round}
+.mimi .cream{fill:var(--m-cream)} .mimi .navy{fill:var(--m-navy)} .mimi .navy-in{fill:var(--m-navy-in)}
+.mimi .aqua{fill:var(--m-aqua)} .mimi .ink{fill:var(--m-line)} .mimi .blush{fill:var(--m-blush)}
+.mimi .whisk{stroke:var(--m-line);stroke-width:2;stroke-linecap:round;opacity:.7}
+.mimi .tag{fill:var(--m-cyan);filter:drop-shadow(0 0 4px var(--m-cyan))}
+.mimi .only-wave,.mimi .only-think,.mimi .only-talk,.mimi .only-sleep{display:none}
+
+/* idle: always on */
+.mimi .cat{transform-origin:100px 205px;animation:breathe 3.2s ease-in-out infinite}
+.mimi .eyes-open{transform-origin:100px 92px;animation:blink 4.5s infinite}
+.mimi .tail{transform-origin:136px 186px;animation:tail 2.6s ease-in-out infinite}
+.mimi .tag{animation:glow 2.4s ease-in-out infinite}
+
+/* wave */
+.mimi[data-state="wave"] .only-wave{display:inline}
+.mimi[data-state="wave"] .paw-r{display:none}
+.mimi .arm{transform-origin:130px 152px;animation:wave .5s ease-in-out infinite alternate}
+
+/* thinking */
+.mimi[data-state="thinking"] .only-think{display:inline}
+.mimi[data-state="thinking"] .pupil{transform:translate(2px,-3px);transition:transform .3s}
+.mimi .dot{animation:dot 1s ease-in-out infinite}
+.mimi .dot:nth-child(2){animation-delay:.15s} .mimi .dot:nth-child(3){animation-delay:.3s}
+
+/* talking */
+.mimi[data-state="talking"] .only-talk{display:inline}
+.mimi[data-state="talking"] .mouth{display:none}
+.mimi .mouth-open{transform-origin:100px 112px;animation:talk .28s ease-in-out infinite alternate}
+
+/* sleep */
+.mimi[data-state="sleep"] .only-sleep{display:inline}
+.mimi[data-state="sleep"] .eyes-open{display:none}
+.mimi[data-state="sleep"] .cat{animation-duration:5s}
+.mimi[data-state="sleep"] .tail{animation-duration:6s}
+.mimi .z{fill:var(--violet);font:700 18px "Bricolage Grotesque",sans-serif;animation:z 3s ease-in infinite;opacity:0}
+.mimi .z:nth-of-type(2){animation-delay:1s} .mimi .z:nth-of-type(3){animation-delay:2s}
+
+@keyframes breathe{0%,100%{transform:scale(1,1)}50%{transform:scale(1.012,1.022)}}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+@keyframes tail{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(7deg)}}
+@keyframes glow{0%,100%{opacity:.85}50%{opacity:1}}
+@keyframes wave{from{transform:rotate(-14deg)}to{transform:rotate(12deg)}}
+@keyframes dot{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes talk{from{transform:scaleY(.35)}to{transform:scaleY(1)}}
+@keyframes z{0%{opacity:0;transform:translate(0,0)}20%{opacity:1}100%{opacity:0;transform:translate(14px,-34px)}}
+@media (prefers-reduced-motion:reduce){.mimi *{animation:none!important}}
+</style>
+
+<div class="wrap">
+  <header style="display:flex;flex-direction:column;gap:10px">
+    <span class="mono">Release 1 · animated SVG + CSS</span>
+    <h1>Meet Mimi v1</h1>
+    <p class="lede">Niharika's AI guide cat. Pick a state to see how she reacts on the site. Tap her to make her wave. A fully animated Rive version comes in Release 2.</p>
+  </header>
+
+  <section class="stage" aria-label="Mimi preview">
+    <div class="hero-mimi" id="hero"></div>
+    <div class="controls">
+      <h2>States</h2>
+      <div class="states" role="group" aria-label="Mimi state">
+        <button type="button" id="s-idle" data-s="idle" aria-pressed="true">Idle</button>
+        <button type="button" id="s-wave" data-s="wave" aria-pressed="false">Wave</button>
+        <button type="button" id="s-thinking" data-s="thinking" aria-pressed="false">Thinking</button>
+        <button type="button" id="s-talking" data-s="talking" aria-pressed="false">Talking</button>
+        <button type="button" id="s-sleep" data-s="sleep" aria-pressed="false">Sleep</button>
+      </div>
+      <p class="hint" id="hint">Idle: blinks, breathes, flicks her tail. This is how she sits in the corner of every page.</p>
+      <p class="hint">On the site this becomes <code>&lt;Mimi state="thinking" /&gt;</code></p>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:14px" aria-label="Sizes">
+    <h2>Does she read at every size?</h2>
+    <div class="sizes">
+      <div class="size"><div data-size="40"></div><span class="mono">Icon · 40px</span></div>
+      <div class="size"><div data-size="88"></div><span class="mono">Corner · 88px</span></div>
+      <div class="size"><div data-size="160"></div><span class="mono">Chat header · 160px</span></div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:14px" aria-label="Where each state is used">
+    <h2>Where each state shows up</h2>
+    <div class="table"><table>
+      <tr><th>State</th><th>When</th><th>What she does</th></tr>
+      <tr><td>Idle</td><td>Any page, nothing happening</td><td>Blinks, breathes, tail sways, collar tag glows</td></tr>
+      <tr><td>Wave</td><td>First visit, or someone taps her</td><td>Raises a paw and waves</td></tr>
+      <tr><td>Thinking</td><td>Waiting for the AI to answer</td><td>Looks up, thought bubble with bouncing dots</td></tr>
+      <tr><td>Talking</td><td>While the answer streams in</td><td>Mouth opens and closes</td></tr>
+      <tr><td>Sleep</td><td>Recruiter Mode, or 30s with no activity</td><td>Eyes closed, slow breathing, floating z's</td></tr>
+    </table></div>
+  </section>
+</div>
+
+<script>
+const MIMI = `
+<svg class="mimi" data-state="idle" viewBox="0 0 220 220" role="img" aria-label="Mimi the cat">
+  <g class="cat">
+    <g class="tail">
+      <path d="M136 186 C176 188 188 150 172 126 C164 114 150 118 156 132" fill="none" stroke="#2A1E3B" stroke-width="20" stroke-linecap="round"/>
+      <path d="M136 186 C176 188 188 150 172 126 C164 114 150 118 156 132" fill="none" stroke="#1B2350" stroke-width="12" stroke-linecap="round"/>
+    </g>
+    <path class="cream o" d="M58 202 C52 152 70 120 100 118 C130 120 148 152 142 202 Z"/>
+    <ellipse class="navy o" cx="80" cy="201" rx="15" ry="9" stroke-width="3"/>
+    <ellipse class="navy o paw-r" cx="120" cy="201" rx="15" ry="9" stroke-width="3"/>
+    <g class="only-wave"><g class="arm">
+      <path d="M128 154 L150 118" fill="none" stroke="#2A1E3B" stroke-width="20" stroke-linecap="round"/>
+      <path d="M128 154 L150 118" fill="none" stroke="#FFF6E6" stroke-width="12" stroke-linecap="round"/>
+      <circle class="navy o" cx="152" cy="113" r="10" stroke-width="3"/>
+    </g></g>
+    <path class="navy o" d="M60 72 L57 26 L92 54 Z"/>
+    <path class="navy-in" d="M66 63 L64 40 L83 55 Z"/>
+    <path class="navy o" d="M140 72 L143 26 L108 54 Z"/>
+    <path class="navy-in" d="M134 63 L136 40 L117 55 Z"/>
+    <ellipse class="cream o" cx="100" cy="92" rx="49" ry="42"/>
+    <path d="M68 128 Q100 142 132 128" fill="none" stroke="#2A1E3B" stroke-width="7" stroke-linecap="round"/>
+    <g>
+      <path d="M92 140 H86 M108 140 H114 M100 148 V154" stroke="#22D3EE" stroke-width="2" stroke-linecap="round"/>
+      <circle class="tag" cx="100" cy="140" r="8" stroke="#2A1E3B" stroke-width="2.5"/>
+      <circle cx="100" cy="140" r="3" fill="#FFFFFF"/>
+    </g>
+    <ellipse class="blush" cx="71" cy="106" rx="7" ry="4" opacity=".45"/>
+    <ellipse class="blush" cx="129" cy="106" rx="7" ry="4" opacity=".45"/>
+    <g class="eyes-open">
+      <ellipse class="aqua o" cx="82" cy="92" rx="9.5" ry="11.5" stroke-width="2.5"/>
+      <ellipse class="aqua o" cx="118" cy="92" rx="9.5" ry="11.5" stroke-width="2.5"/>
+      <g class="pupil">
+        <ellipse class="ink" cx="82" cy="94" rx="4.2" ry="6.2"/>
+        <ellipse class="ink" cx="118" cy="94" rx="4.2" ry="6.2"/>
+        <circle cx="85" cy="89" r="2.4" fill="#FFFFFF"/>
+        <circle cx="121" cy="89" r="2.4" fill="#FFFFFF"/>
+      </g>
+    </g>
+    <g class="only-sleep">
+      <path d="M73 94 Q82 101 91 94" fill="none" stroke="#2A1E3B" stroke-width="3" stroke-linecap="round"/>
+      <path d="M109 94 Q118 101 127 94" fill="none" stroke="#2A1E3B" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <path class="blush" d="M95.5 104 H104.5 L100 109.5 Z"/>
+    <path class="mouth" d="M100 109 Q95 115 90 112 M100 109 Q105 115 110 112" fill="none" stroke="#2A1E3B" stroke-width="2.5" stroke-linecap="round"/>
+    <ellipse class="ink only-talk mouth-open" cx="100" cy="114" rx="5.5" ry="5"/>
+    <path class="whisk" d="M60 103 L36 98 M60 109 L37 112 M140 103 L164 98 M140 109 L163 112"/>
+  </g>
+  <g class="only-think">
+    <circle cx="150" cy="58" r="4" fill="#FFFFFF" stroke="#2A1E3B" stroke-width="2.5"/>
+    <circle cx="160" cy="44" r="6" fill="#FFFFFF" stroke="#2A1E3B" stroke-width="2.5"/>
+    <ellipse cx="184" cy="24" rx="26" ry="17" fill="#FFFFFF" stroke="#2A1E3B" stroke-width="2.5"/>
+    <g><circle class="dot" cx="173" cy="25" r="3.5" fill="#7C5CFF"/><circle class="dot" cx="184" cy="25" r="3.5" fill="#7C5CFF"/><circle class="dot" cx="195" cy="25" r="3.5" fill="#7C5CFF"/></g>
+  </g>
+  <g class="only-sleep">
+    <text class="z" x="142" y="62">z</text><text class="z" x="150" y="54">z</text><text class="z" x="158" y="46">z</text>
+  </g>
+</svg>`;
+
+const HINTS = {
+  idle: "Idle: blinks, breathes, flicks her tail. This is how she sits in the corner of every page.",
+  wave: "Wave: first visit, or when someone taps her.",
+  thinking: "Thinking: shown while the AI works on an answer, so waiting feels friendly.",
+  talking: "Talking: mouth moves while the answer streams in.",
+  sleep: "Sleep: Recruiter Mode, or after 30 seconds with nothing happening."
+};
+
+const hero = document.getElementById("hero");
+hero.innerHTML = MIMI;
+document.querySelectorAll("[data-size]").forEach(el => {
+  el.innerHTML = MIMI;
+  el.firstElementChild.style.width = el.dataset.size + "px";
+  el.firstElementChild.setAttribute("aria-label", "Mimi at " + el.dataset.size + " pixels");
+});
+const heroSvg = hero.firstElementChild;
+const buttons = document.querySelectorAll(".states button");
+let waveTimer;
+
+function setState(s) {
+  heroSvg.dataset.state = s;
+  buttons.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.s === s)));
+  document.getElementById("hint").textContent = HINTS[s];
+}
+buttons.forEach(b => b.addEventListener("click", () => { clearTimeout(waveTimer); setState(b.dataset.s); }));
+heroSvg.addEventListener("click", () => {
+  const prev = heroSvg.dataset.state === "wave" ? "idle" : heroSvg.dataset.state;
+  setState("wave");
+  clearTimeout(waveTimer);
+  waveTimer = setTimeout(() => setState(prev), 2000);
+});
+</script>

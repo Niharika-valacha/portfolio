@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Midnight & Cream</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  body { font-family: Inter, system-ui, sans-serif; background: #e9e8e4; color: #1A2138; padding: 48px 16px; }
+  .wrap { max-width: 1100px; margin: 0 auto; display: grid; gap: 32px; }
+  h1 { font-weight: 600; font-size: 28px; letter-spacing: -0.02em; }
+  .modes { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+  .mode { border-radius: 20px; padding: 32px; }
+  .light { --paper:#FBFAF7; --mist:#D6DCEE; --ink:#1A2138; --slate:#5E6680; --dusk:#4B5A94; --ember:#D9622B; }
+  .dark  { --paper:#12151F; --mist:#1E2436; --ink:#ECEAE4; --slate:#9AA1B6; --dusk:#AFBBE6; --ember:#F07A45; }
+  .mode { background: var(--paper); color: var(--ink); border: 1px solid color-mix(in srgb, var(--ink) 10%, transparent); }
+  .label { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; color: var(--slate); margin-bottom: 20px; }
+  .swatches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 32px; }
+  .sw { border-radius: 12px; overflow: hidden; border: 1px solid color-mix(in srgb, var(--ink) 10%, transparent); }
+  .chip { height: 72px; }
+  .meta { padding: 10px 12px; font-size: 13px; }
+  .meta b { display: block; font-weight: 600; }
+  .meta span { color: var(--slate); font-family: ui-monospace, monospace; font-size: 12px; }
+  /* sample */
+  .sample { background: var(--mist); border-radius: 16px; padding: 28px; }
+  .sample small { color: var(--slate); font-size: 13px; }
+  .sample h2 { font-size: 26px; font-weight: 600; letter-spacing: -0.02em; margin: 6px 0 10px; }
+  .sample p { color: var(--slate); font-size: 15px; line-height: 1.55; margin-bottom: 20px; }
+  .sample a { color: var(--dusk); font-weight: 500; text-decoration: none; border-bottom: 1px solid currentColor; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .btn { background: var(--ember); color: #fff; border-radius: 999px; padding: 10px 18px; font-size: 14px; font-weight: 500; }
+  .ghost { color: var(--ink); border: 1px solid color-mix(in srgb, var(--ink) 20%, transparent); border-radius: 999px; padding: 10px 18px; font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Midnight &amp; Cream</h1>
+  <div class="modes">
+    <section class="mode light">
+      <div class="label">Light</div>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#FBFAF7"></div><div class="meta"><b>Paper</b><span>#FBFAF7</span></div></div>
+        <div class="sw"><div class="chip" style="background:#D6DCEE"></div><div class="meta"><b>Mist</b><span>#D6DCEE</span></div></div>
+        <div class="sw"><div class="chip" style="background:#1A2138"></div><div class="meta"><b>Ink</b><span>#1A2138</span></div></div>
+        <div class="sw"><div class="chip" style="background:#5E6680"></div><div class="meta"><b>Slate</b><span>#5E6680</span></div></div>
+        <div class="sw"><div class="chip" style="background:#4B5A94"></div><div class="meta"><b>Dusk</b><span>#4B5A94</span></div></div>
+        <div class="sw"><div class="chip" style="background:#D9622B"></div><div class="meta"><b>Ember</b><span>#D9622B</span></div></div>
+      </div>
+      <div class="sample">
+        <small>AI / Applied AI Engineer</small>
+        <h2>Niharika Valacha</h2>
+        <p>Cut agent latency 73% (3.8s → 1.04s). Builds multi-agent systems and backends. <a href="#">Read the case study</a></p>
+        <div class="row"><span class="btn">Download resume</span><span class="ghost">Recruiter Mode</span></div>
+      </div>
+    </section>
+    <section class="mode dark">
+      <div class="label">Dark</div>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#12151F"></div><div class="meta"><b>Paper</b><span>#12151F</span></div></div>
+        <div class="sw"><div class="chip" style="background:#1E2436"></div><div class="meta"><b>Mist</b><span>#1E2436</span></div></div>
+        <div class="sw"><div class="chip" style="background:#ECEAE4"></div><div class="meta"><b>Ink</b><span>#ECEAE4</span></div></div>
+        <div class="sw"><div class="chip" style="background:#9AA1B6"></div><div class="meta"><b>Slate</b><span>#9AA1B6</span></div></div>
+        <div class="sw"><div class="chip" style="background:#AFBBE6"></div><div class="meta"><b>Dusk</b><span>#AFBBE6</span></div></div>
+        <div class="sw"><div class="chip" style="background:#F07A45"></div><div class="meta"><b>Ember</b><span>#F07A45</span></div></div>
+      </div>
+      <div class="sample">
+        <small>AI / Applied AI Engineer</small>
+        <h2>Niharika Valacha</h2>
+        <p>Cut agent latency 73% (3.8s → 1.04s). Builds multi-agent systems and backends. <a href="#">Read the case study</a></p>
+        <div class="row"><span class="btn">Download resume</span><span class="ghost">Recruiter Mode</span></div>
+      </div>
+    </section>
+  </div>
+</div>
+</body>
+</html>

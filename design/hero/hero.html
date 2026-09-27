@@ -1,0 +1,186 @@
+<title>Niharika Hero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --bg:#FFF4EC; --card:#FFFFFF; --line:#F3DCCB; --ink:#2A1E3B; --muted:#6E5F7E;
+  --orange:#FF8A5B; --orange-ink:#D2572A; --violet:#7C5CFF; --sun:#FFC857; --shadow:rgba(42,30,59,.08);
+  --m-cream:#FFF6E6; --m-navy:#1B2350; --m-navy-in:#4A5BA8; --m-aqua:#4FE3D2; --m-cyan:#22D3EE; --m-line:#2A1E3B; --m-blush:#FF8FA3;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"DM Sans",ui-sans-serif,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){color-scheme:dark;--bg:#1E1530;--card:#2A1F40;--line:#3D2F57;--ink:#FFE9DC;--muted:#C2B3CF;--orange-ink:#FF9B72;--violet:#B3A1FF;--shadow:rgba(0,0,0,.3)}
+}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#1E1530;--card:#2A1F40;--line:#3D2F57;--ink:#FFE9DC;--muted:#C2B3CF;--orange-ink:#FF9B72;--violet:#B3A1FF;--shadow:rgba(0,0,0,.3)}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:17px/1.6 var(--body);padding-inline:24px;overflow-x:hidden}
+.shell{max-width:1160px;margin:0 auto}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--violet);outline-offset:3px;border-radius:8px}
+
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);margin-inline:-24px;padding:14px 24px}
+.nav-in{max-width:1160px;margin:0 auto;display:flex;align-items:center;gap:28px}
+.logo{font:800 1.15rem var(--display);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--card);border:2px solid var(--line);text-decoration:none}
+.links{display:flex;gap:26px;margin-left:auto;font-weight:500}
+.links a{text-decoration:none;color:var(--muted)}
+.links a:hover{color:var(--ink)}
+.btn{font:700 .98rem var(--body);border-radius:999px;padding:12px 22px;border:2px solid transparent;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--orange);color:#2A1E3B;box-shadow:0 6px 0 -1px color-mix(in srgb,var(--orange) 55%,#2A1E3B)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.nav-cta{padding:9px 18px;font-size:.92rem}
+
+/* hero */
+.hero > *{min-width:0}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:center;padding-block:56px 40px}
+.eyebrow{font:500 .78rem var(--mono);letter-spacing:.05em;color:var(--muted);display:inline-flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);padding:6px 14px;border-radius:999px}
+.eyebrow i{width:8px;height:8px;border-radius:50%;background:#2BB673;box-shadow:0 0 0 4px color-mix(in srgb,#2BB673 20%,transparent)}
+h1{font:800 clamp(2.6rem,6.4vw,5.1rem)/1.0 var(--display);letter-spacing:-.035em;margin:22px 0 0;text-wrap:balance}
+h1 .name{position:relative;white-space:nowrap}
+h1 .name svg{position:absolute;left:-2%;bottom:-.16em;width:104%;height:.3em;overflow:visible}
+h1 .name path{stroke:var(--orange);stroke-width:7;fill:none;stroke-linecap:round;stroke-dasharray:420;stroke-dashoffset:0;animation:draw 1s .3s ease-out backwards}
+h1 .line2{display:block;color:var(--muted);font-weight:600;margin-top:.12em}
+h1 .line2 b{color:var(--ink);font-weight:800}
+.sub{margin:22px 0 0;max-width:46ch;color:var(--muted);font-size:1.12rem}
+
+.stickers{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.sticker{background:var(--card);border:2px solid var(--ink);border-radius:14px;padding:10px 16px;box-shadow:4px 4px 0 var(--ink);display:flex;flex-direction:column;line-height:1.25;transition:transform .2s}
+.sticker:nth-child(1){transform:rotate(-2.5deg)}
+.sticker:nth-child(2){transform:rotate(1.8deg)}
+.sticker:nth-child(3){transform:rotate(-1.2deg)}
+.sticker:hover{transform:rotate(0) translateY(-3px)}
+.sticker b{font:800 1.45rem var(--display);color:var(--orange-ink);font-variant-numeric:tabular-nums}
+.sticker span{font:500 .72rem var(--mono);color:var(--muted)}
+.ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+
+.mimi-spot{position:relative;display:grid;place-items:center}
+.mimi-spot::before{content:"";position:absolute;inset:6% 4%;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--sun) 55%,transparent) 0%,transparent 68%)}
+.mimi-spot svg{position:relative;width:min(400px,100%);height:auto;cursor:pointer}
+.bubble{position:absolute;z-index:2;top:-4%;left:-8%;background:var(--card);border:2px solid var(--ink);border-radius:18px 18px 18px 4px;padding:10px 16px;font-weight:700;box-shadow:4px 4px 0 var(--ink);animation:pop .5s 1s cubic-bezier(.3,1.6,.6,1) backwards}
+.bubble small{display:block;font:500 .7rem var(--mono);color:var(--muted)}
+
+.peek{display:flex;align-items:center;gap:12px;color:var(--muted);font:500 .8rem var(--mono);padding-bottom:40px;border-bottom:2px dashed var(--line)}
+.peek span{animation:nudge 1.6s ease-in-out infinite}
+
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-weight:500;font-size:.92rem}
+
+@keyframes draw{from{stroke-dashoffset:420}}
+@keyframes pop{from{opacity:0;transform:scale(.6)}}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+
+@media (max-width:860px){
+  .links{display:none}
+  .nav-in{justify-content:space-between}
+  .hero{grid-template-columns:1fr;padding-block:28px 32px;gap:8px}
+  .mimi-spot{order:-1;max-width:230px;margin:0 auto}
+  .bubble{left:auto;right:-18%;top:-6%;font-size:.8rem;padding:6px 10px}
+  .eyebrow{font-size:.68rem;flex-wrap:wrap}
+  .sticker b{font-size:1.2rem}
+  .ctas .btn{flex:1 1 200px;justify-content:center}
+}
+
+/* Mimi */
+.mimi *{transform-box:view-box}
+.mimi .o{stroke:var(--m-line);stroke-width:4;stroke-linejoin:round;stroke-linecap:round}
+.mimi .cream{fill:var(--m-cream)} .mimi .navy{fill:var(--m-navy)} .mimi .navy-in{fill:var(--m-navy-in)}
+.mimi .aqua{fill:var(--m-aqua)} .mimi .ink{fill:var(--m-line)} .mimi .blush{fill:var(--m-blush)}
+.mimi .whisk{stroke:var(--m-line);stroke-width:2;stroke-linecap:round;opacity:.7}
+.mimi .tag{fill:var(--m-cyan);filter:drop-shadow(0 0 4px var(--m-cyan));animation:glow 2.4s ease-in-out infinite}
+.mimi .only-wave{display:none}
+.mimi .cat{transform-origin:100px 205px;animation:breathe 3.2s ease-in-out infinite}
+.mimi .eyes-open{transform-origin:100px 92px;animation:blink 4.5s infinite}
+.mimi .tail{transform-origin:136px 186px;animation:tail 2.6s ease-in-out infinite}
+.mimi[data-state="wave"] .only-wave{display:inline}
+.mimi[data-state="wave"] .paw-r{display:none}
+.mimi .arm{transform-origin:130px 152px;animation:wave .5s ease-in-out infinite alternate}
+@keyframes breathe{0%,100%{transform:scale(1,1)}50%{transform:scale(1.012,1.022)}}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+@keyframes tail{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(7deg)}}
+@keyframes glow{0%,100%{opacity:.85}50%{opacity:1}}
+@keyframes wave{from{transform:rotate(-14deg)}to{transform:rotate(12deg)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<nav aria-label="Main">
+  <div class="nav-in">
+    <a class="logo" href="#top" aria-label="Niharika Valacha, home">NV</a>
+    <div class="links"><a href="#work">Work</a><a href="#work">Experience</a><a href="#work">Contact</a></div>
+    <a class="btn btn-primary nav-cta" href="#recruiter" data-demo="Recruiter Mode opens a one-screen resume">Recruiter Mode</a>
+  </div>
+</nav>
+
+<main class="shell" id="top">
+  <section class="hero">
+    <div>
+      <span class="eyebrow"><i></i>AI engineer · Delhi NCR · open to relocation</span>
+      <h1>Hi, I'm <span class="name">Niharika.<svg viewBox="0 0 400 30" preserveAspectRatio="none" aria-hidden="true"><path d="M4 20 C60 6 110 28 170 16 S290 6 396 18"/></svg></span>
+        <span class="line2">I build <b>AI agents</b> that actually ship.</span></h1>
+      <p class="sub">Production multi-agent systems, RAG, and the backends that keep them fast and safe.</p>
+
+      <div class="stickers" aria-label="Key results">
+        <div class="sticker"><b>73% faster</b><span>agent latency 3.8s → 1.04s</span></div>
+        <div class="sticker"><b>2N+1 → 3</b><span>queries for candidate search</span></div>
+        <div class="sticker"><b>Top 700</b><span>of 9,100+ · Google Agentic AI Day</span></div>
+      </div>
+
+      <div class="ctas">
+        <a class="btn btn-primary" href="#resume" data-demo="On the real site this downloads the PDF resume">Download resume ↓</a>
+        <a class="btn btn-ghost" href="#work" data-demo="Scrolls to Things I've built">See my work</a>
+      </div>
+    </div>
+
+    <div class="mimi-spot" id="mimi-spot">
+      <div class="bubble">Meow! I'm Mimi.<small>tap me</small></div>
+    </div>
+  </section>
+
+  <div class="peek" id="work"><span>↓</span> Next: Things I've built</div>
+</main>
+
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+const MIMI = `<svg class="mimi" data-state="wave" viewBox="0 0 220 220" role="img" aria-label="Mimi the cat, waving">
+<g class="cat">
+<g class="tail"><path d="M136 186 C176 188 188 150 172 126 C164 114 150 118 156 132" fill="none" stroke="#2A1E3B" stroke-width="20" stroke-linecap="round"/><path d="M136 186 C176 188 188 150 172 126 C164 114 150 118 156 132" fill="none" stroke="#1B2350" stroke-width="12" stroke-linecap="round"/></g>
+<path class="cream o" d="M58 202 C52 152 70 120 100 118 C130 120 148 152 142 202 Z"/>
+<ellipse class="navy o" cx="80" cy="201" rx="15" ry="9" stroke-width="3"/>
+<ellipse class="navy o paw-r" cx="120" cy="201" rx="15" ry="9" stroke-width="3"/>
+<g class="only-wave"><g class="arm"><path d="M128 154 L150 118" fill="none" stroke="#2A1E3B" stroke-width="20" stroke-linecap="round"/><path d="M128 154 L150 118" fill="none" stroke="#FFF6E6" stroke-width="12" stroke-linecap="round"/><circle class="navy o" cx="152" cy="113" r="10" stroke-width="3"/></g></g>
+<path class="navy o" d="M60 72 L57 26 L92 54 Z"/><path class="navy-in" d="M66 63 L64 40 L83 55 Z"/>
+<path class="navy o" d="M140 72 L143 26 L108 54 Z"/><path class="navy-in" d="M134 63 L136 40 L117 55 Z"/>
+<ellipse class="cream o" cx="100" cy="92" rx="49" ry="42"/>
+<path d="M68 128 Q100 142 132 128" fill="none" stroke="#2A1E3B" stroke-width="7" stroke-linecap="round"/>
+<g><path d="M92 140 H86 M108 140 H114 M100 148 V154" stroke="#22D3EE" stroke-width="2" stroke-linecap="round"/><circle class="tag" cx="100" cy="140" r="8" stroke="#2A1E3B" stroke-width="2.5"/><circle cx="100" cy="140" r="3" fill="#FFFFFF"/></g>
+<ellipse class="blush" cx="71" cy="106" rx="7" ry="4" opacity=".45"/><ellipse class="blush" cx="129" cy="106" rx="7" ry="4" opacity=".45"/>
+<g class="eyes-open"><ellipse class="aqua o" cx="82" cy="92" rx="9.5" ry="11.5" stroke-width="2.5"/><ellipse class="aqua o" cx="118" cy="92" rx="9.5" ry="11.5" stroke-width="2.5"/>
+<ellipse class="ink" cx="82" cy="94" rx="4.2" ry="6.2"/><ellipse class="ink" cx="118" cy="94" rx="4.2" ry="6.2"/><circle cx="85" cy="89" r="2.4" fill="#FFFFFF"/><circle cx="121" cy="89" r="2.4" fill="#FFFFFF"/></g>
+<path class="blush" d="M95.5 104 H104.5 L100 109.5 Z"/>
+<path d="M100 109 Q95 115 90 112 M100 109 Q105 115 110 112" fill="none" stroke="#2A1E3B" stroke-width="2.5" stroke-linecap="round"/>
+<path class="whisk" d="M60 103 L36 98 M60 109 L37 112 M140 103 L164 98 M140 109 L163 112"/>
+</g></svg>`;
+
+const spot = document.getElementById("mimi-spot");
+spot.insertAdjacentHTML("beforeend", MIMI);
+const mimi = spot.querySelector(".mimi");
+let t = setTimeout(() => mimi.dataset.state = "idle", 2400);
+mimi.addEventListener("click", () => {
+  mimi.dataset.state = "wave";
+  clearTimeout(t);
+  t = setTimeout(() => mimi.dataset.state = "idle", 2000);
+});
+
+const toast = document.getElementById("toast");
+let tt;
+document.querySelectorAll("[data-demo]").forEach(a => a.addEventListener("click", e => {
+  e.preventDefault();
+  toast.textContent = "Preview: " + a.dataset.demo;
+  toast.hidden = false;
+  clearTimeout(tt);
+  tt = setTimeout(() => toast.hidden = true, 2200);
+}));
+</script>

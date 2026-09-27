@@ -1,0 +1,22 @@
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+.vercel/
+
+# Python
+__pycache__/
+.venv/
+
+# Go
+bin/
