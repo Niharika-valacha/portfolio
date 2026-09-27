@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+/* Midnight & Cream palette */
+:root {
+  --paper: #FBFAF7;
+  --mist: #D6DCEE;
+  --ink: #1A2138;
+  --slate: #5E6680;
+  --dusk: #4B5A94;
+  --ember: #D9622B;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #12151F;
+    --mist: #1E2436;
+    --ink: #ECEAE4;
+    --slate: #9AA1B6;
+    --dusk: #AFBBE6;
+    --ember: #F07A45;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-mist: var(--mist);
+  --color-ink: var(--ink);
+  --color-slate: var(--slate);
+  --color-dusk: var(--dusk);
+  --color-ember: var(--ember);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+}
