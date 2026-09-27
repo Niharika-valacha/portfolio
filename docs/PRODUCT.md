@@ -44,7 +44,7 @@
 - Premium, a little mysterious, a little sassy. Needs a simplified version that reads at 48–64px.
 - Built for Rive.
 - **Costumes are small props:** glasses (Projects) · scroll badge (Experience) · tiny tie (Interview) · yarn (Fun) · goggles (X-ray Mode).
-- **Site palette (decided, "Midnight & Cream"):** Paper `#FBFAF7` / `#12151F` · Mist `#D6DCEE` / `#1E2436` · Ink `#1A2138` / `#ECEAE4` · Slate `#5E6680` / `#9AA1B6` · Dusk `#4B5A94` / `#AFBBE6` · Ember `#D9622B` / `#F07A45` (light / dark). Usage ~90% paper+ink, 8% mist, 2% ember. No gradients, hairline borders. Preview: `design/palette/palette.html`. Ember button text contrast still to fix.
+- **Site palette (decided, "Midnight & Cream"):** Paper `#FFFFFF` / `#12151F` · Mist `#D6DCEE` / `#1E2436` · Ink `#1A2138` / `#ECEAE4` · Slate `#5E6680` / `#9AA1B6` · Dusk `#4B5A94` / `#AFBBE6` · Ember `#D9622B` / `#F07A45` (light / dark). Usage ~90% paper+ink, 8% mist, 2% ember. No gradients, hairline borders. Preview: `design/palette/palette.html`. Ember button text contrast still to fix.
 
 ## 5. First 5 seconds
 
