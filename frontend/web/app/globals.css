@@ -2,7 +2,7 @@
 
 /* Midnight & Cream palette */
 :root {
-  --paper: #FBFAF7;
+  --paper: #FFFFFF;
   --mist: #D6DCEE;
   --ink: #1A2138;
   --slate: #5E6680;
@@ -10,15 +10,14 @@
   --ember: #D9622B;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #12151F;
-    --mist: #1E2436;
-    --ink: #ECEAE4;
-    --slate: #9AA1B6;
-    --dusk: #AFBBE6;
-    --ember: #F07A45;
-  }
+/* Dark theme: opt-in via a toggle later, not the OS setting */
+:root[data-theme="dark"] {
+  --paper: #12151F;
+  --mist: #1E2436;
+  --ink: #ECEAE4;
+  --slate: #9AA1B6;
+  --dusk: #AFBBE6;
+  --ember: #F07A45;
 }
 
 @theme inline {
